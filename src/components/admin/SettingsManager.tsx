@@ -59,6 +59,8 @@ export function SettingsManager() {
       <Block title="Datos del negocio">
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="Nombre del negocio"><input className="input" value={s.businessName} onChange={(e) => set("businessName", e.target.value)} /></Field>
+          <Field label="Razón social (opcional)" hint="Titular legal del negocio. Solo aparece en Aviso legal y Privacidad si lo rellenas."><input className="input" value={s.legalName} onChange={(e) => set("legalName", e.target.value)} /></Field>
+          <Field label="NIF/CIF del negocio (opcional)" hint="Déjalo vacío si no quieres mostrarlo."><input className="input" value={s.legalId} onChange={(e) => set("legalId", e.target.value)} /></Field>
           <Field label="Teléfono"><input className="input" value={s.phone} onChange={(e) => set("phone", e.target.value)} /></Field>
           <Field label="Dirección"><input className="input" value={s.address} onChange={(e) => set("address", e.target.value)} /></Field>
           <Field label="Correo electrónico"><input className="input" type="email" value={s.email} onChange={(e) => set("email", e.target.value)} /></Field>

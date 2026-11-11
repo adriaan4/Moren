@@ -104,6 +104,9 @@ export interface Review {
 
 export interface Settings {
   businessName: string;
+  /** Razón social y NIF/CIF del negocio: opcionales, solo se muestran en las páginas legales si se rellenan */
+  legalName: string;
+  legalId: string;
   phone: string;
   address: string;
   email: string;

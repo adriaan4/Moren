@@ -123,6 +123,8 @@ export const customerPatchSchema = z.object({
 
 export const settingsSchema = z.object({
   businessName: text(80).min(1),
+  legalName: text(120),
+  legalId: text(30),
   phone: text(30),
   address: text(200),
   email: z.string().trim().max(120).refine((v) => v === "" || /^\S+@\S+\.\S+$/.test(v), "Correo no válido"),

@@ -5,6 +5,8 @@ import type { Settings } from "@/types";
 /** Valores iniciales. No se inventan servicios, precios ni horarios: todo se configura desde el panel. */
 export const DEFAULT_SETTINGS: Settings = {
   businessName: "MORÉN PELUQUERÍA DE CABALLEROS",
+  legalName: "",
+  legalId: "",
   phone: "976 44 64 54",
   address: "Avenida de Pablo Gargallo 107, 50003 Zaragoza",
   email: "",

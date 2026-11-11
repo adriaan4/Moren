@@ -7,16 +7,14 @@ export const metadata: Metadata = { title: "Aviso legal", robots: { index: true,
 
 export default async function AvisoLegalPage() {
   const s = await getSettings();
+  const holder = s.legalName || s.businessName;
   return (
     <>
       <PageHeader eyebrow="Legal" title="Aviso legal" />
       <section className="py-14">
         <article className="container-x max-w-3xl space-y-8 text-[15px] leading-relaxed text-bone/80 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-bone">
-          <p className="border border-gold/40 bg-gold/5 p-4 text-sm text-gold-light">
-            Texto base conforme a la Ley 34/2002 (LSSI-CE). El titular debe completar los datos entre corchetes y revisarlo con su asesor legal.
-          </p>
           <div><h2>Datos identificativos</h2>
-            <p>Titular: [NOMBRE O RAZÓN SOCIAL] · NIF/CIF: [NIF/CIF] · Domicilio: {s.address} · Teléfono: {s.phone}{s.email ? ` · Correo: ${s.email}` : ""} · Datos de inscripción registral (si procede): [DATOS].</p></div>
+            <p>Titular: {holder}{s.legalId ? ` · NIF/CIF: ${s.legalId}` : ""} · Domicilio: {s.address} · Teléfono: {s.phone}{s.email ? ` · Correo: ${s.email}` : ""}.</p></div>
           <div><h2>Objeto</h2>
             <p>Este sitio web ofrece información sobre los servicios de {s.businessName} y permite reservar citas online. El acceso implica la aceptación de estas condiciones.</p></div>
           <div><h2>Reservas y precios</h2>
