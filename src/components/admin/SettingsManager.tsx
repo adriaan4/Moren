@@ -8,6 +8,16 @@ import { AdminTitle, Field, Notice, Toggle } from "./ui";
 
 interface BackupInfo { backups: string[] }
 
+/**
+ * Debe estar FUERA de SettingsManager: si se definiera dentro, React lo vería como un componente
+ * nuevo en cada pulsación de tecla, desmontaría los campos y la página saltaría arriba.
+ */
+function Block({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="card mb-8 p-5 sm:p-6"><h2 className="mb-5 font-display text-xl">{title}</h2><div className="space-y-5">{children}</div></section>
+  );
+}
+
 export function SettingsManager() {
   const [s, setS] = useState<Settings | null>(null);
   const [msg, setMsg] = useState<{ k: "ok" | "err"; t: string } | null>(null);
@@ -40,10 +50,6 @@ export function SettingsManager() {
   async function changePw() {
     try { await api("/api/admin/me", { method: "PUT", body: pw }); setPw({ current: "", next: "" }); ok("Contraseña actualizada."); } catch (e) { fail(e); }
   }
-
-  const Block = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <section className="card mb-8 p-5 sm:p-6"><h2 className="mb-5 font-display text-xl">{title}</h2><div className="space-y-5">{children}</div></section>
-  );
 
   return (
     <>
