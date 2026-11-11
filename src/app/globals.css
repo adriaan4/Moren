@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-ink text-bone font-sans antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #c9a24b;
+  color: #0a0a0a;
+}
+
+:focus-visible {
+  outline: 2px solid #c9a24b;
+  outline-offset: 3px;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 px-7 text-xs font-semibold uppercase tracking-[0.22em] transition duration-300 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-ink hover:bg-gold-light active:scale-[.98];
+  }
+  .btn-outline {
+    @apply btn border border-gold/60 text-gold hover:bg-gold hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn border border-steel text-bone hover:border-gold hover:text-gold;
+  }
+  .btn-sm {
+    @apply min-h-[40px] px-4 text-[11px] tracking-[0.16em];
+  }
+  .input {
+    @apply min-h-[48px] w-full border border-steel bg-coal px-4 text-[15px] text-bone placeholder:text-ash/70 focus:border-gold focus:outline-none;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ash;
+  }
+  .card {
+    @apply border border-steel bg-coal;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.32em] text-gold;
+  }
+  .gold-rule {
+    @apply h-px w-16 bg-gradient-to-r from-gold to-transparent;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+}
+
+/* Textura sutil estilo barbería: franjas diagonales muy tenues */
+.stripes {
+  background-image: repeating-linear-gradient(135deg, rgba(201, 162, 75, 0.05) 0 2px, transparent 2px 14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
